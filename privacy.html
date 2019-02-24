@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Heart Rate→Privacy</title>
+		<!-- For those reading, here's an example of a anonymous usage measurement that's respectful of your privacy. This one helps us figure out how many of our users are privacy-conscious and checking this page, so we can serve you better. We currently use Amplitude (i.e. not an ad company) to help us measure. -->
+		<script type="text/javascript">
+			(function(e, t) {
+				var n = {
+					_q: [],
+					_iq: {}
+				};
+				var r = t.createElement("script");
+				r.type = "text/javascript";
+				r.async = true;
+				r.src = "https://cdn.amplitude.com/libs/amplitude-4.5.2-min.gz.js";
+				r.integrity = "sha384-f1maK8oMrCMNEWGGg3Hx3dMTOQBbXr4e1ZIjB/J0TcgJx5UeE0g5S5PM5BbWPe4E";
+				r.crossOrigin = "anonymous";
+				r.onload = function() {
+					e.amplitude.runQueuedFunctions()
+				};
+
+				var i = t.getElementsByTagName("script")[0];
+				i.parentNode.insertBefore(r, i);
+				function s(e, t) {
+					e.prototype[t] = function() {
+						this._q.push([t].concat(Array.prototype.slice.call(arguments, 0)));
+						return this
+					}
+				}
+				var d = ["init", "logEvent"];
+				function v(e) {
+					function t(t) {
+						e[t] = function() {
+							e._q.push([t].concat(Array.prototype.slice.call(arguments, 0)))
+						}
+					}
+					for (var n = 0; n < d.length; n++) {
+						t(d[n])
+					}
+				}
+				v(n);
+				n.getInstance = function(e) {
+					e = (!e || e.length === 0 ? "$default_instance" : e).toLowerCase();
+					if (!n._iq.hasOwnProperty(e)) {
+						n._iq[e] = {
+							_q: []
+						};
+						v(n._iq[e])
+					}
+					return n._iq[e]
+				};
+				e.amplitude = n
+			})(window, document);
+
+			var a = amplitude.getInstance();
+			a.init("2565032ed2248c60d88c5d7be9e3148a");
+			a.logEvent("Privacy Page View");
+		</script>
+		<link href="https://fonts.googleapis.com/css?family=Lato:300i,400" rel="stylesheet">
+		<style>
+			body {font-family: 'Lato'}
+			p {color: white; font-family: 'Lato', sans-serif; font-size: 18px; font-style: italic; text-shadow: 0px 0px 1em #111111;}
+			p.indent {text-indent: 2.5em;}
+		</style>
+	</head>
+	<body style="background-color: rgb(32,32,32); margin:0px; padding:20px">
+		<div style="margin: 0px auto; padding: 40px; max-width: 800px; background-color: rgb(45,45,45); box-shadow: 0px 0px 15px #111111; border-radius: 2px">
+			<img src="heart.svg" style="width:100px; display: block; margin-bottom:32px; margin-left: auto; margin-right: auto; filter: drop-shadow(0px 0px 15px #111111); ">
+
+			<p>Dear User,</p>
+
+			<p class="indent">We don't track you personally, and we don't show you ads. Our focus is on creating great software for you while protecting your privacy.</p>
+
+			<p class="indent">To help us make the software better for everyone, we do measure anonymously how the product is used. We don't identify you from these usage measurements, nor do we believe we could.</p>
+
+			<p class="indent">The only way we'd know who you are is if you contact us—which we love! Feel free to reach out at heartrate@hedronvision.com with any questions or feedback on this or anything else.</p>
+
+			<p>Sincerely,
+			<br>
+			<span style="font-size: 19px; line-height: 30px">Your friends at Hedron Vision</span>
+			<br><span style="font-size: 16px;">(the makers of Heart Rate <img src="appIcon.svg" style="height: 1em; vertical-align: text-bottom"> )</span>
+			</p>
+			
+			<figure style="width:110px; display: block; margin: 0px auto 30px auto; filter: drop-shadow(0px 0px 15px #111111); " >
+				<!-- If you're reading this, you should consider working with us. Reach out at joinus@hedronvision.com! -->
+				<img src="cube.svg" onload="
+					if (this.spinning) {
+						this.timerPause = function() {
+							setTimeout(this.pause.bind(this), 17800/6.0);
+						};
+						this.pause = function() {
+							if (this.mouseIsOver) {
+								this.timerPause();
+							} else { 
+								this.spinning=false;
+								this.src='cube.svg';
+							}
+						};
+						this.play = function() {
+							if (!this.spinning) {
+								this.spinning = true;
+								this.src='cubeAnimated.svg';
+								this.timerPause();
+							}
+						};
+						this.timerPause();
+						this.onload = undefined;
+					} else {
+						this.spinning = true;
+						this.src = 'cubeAnimated.svg';
+					}"
+					onmousedown="if (this.play) {this.play();}"
+					onmouseover="this.mouseIsOver=true; this.onmousedown()"
+					onmouseout="this.mouseIsOver=false;"
+					onmouseup="this.onmouseout();">
+				<figcaption style="color: white; text-align: center">Hedron Vision</figcaption>
+			</figure>
+
+			<p style="font-size: 16px; color:rgb(200,200,200); margin-bottom: 0px">P.S. We may need to update this letter as the product grows. If so, we'll keep it updated right here at heartrate.hedronvision.com/privacy. You've probably noticed that we don't force you to create an account or provide your email—that helps protect your privacy but prevents us from emailing everyone when we make changes. You're always welcome to check back here for updates, and we'll assume you're happy from your continued use of the software.</p>
+		</div>
+	</body>
+</html>
