@@ -76,7 +76,7 @@
 	</head>
 	<body style="background-color: rgb(32,32,32); margin:0px; padding:20px">
 		<div style="margin: 0px auto; padding: 40px; max-width: 800px; background-color: rgb(45,45,45); box-shadow: 0px 0px 15px #111111; border-radius: 2px">
-			<img src="heart.svg" style="width:100px; display: block; margin-bottom:32px; margin-left: auto; margin-right: auto; filter: drop-shadow(0px 0px 15px #111111); ">
+			<img src="/heart.svg" style="width:100px; display: block; margin-bottom:32px; margin-left: auto; margin-right: auto; filter: drop-shadow(0px 0px 15px #111111); ">
 
 			<p>Dear User,</p>
 
@@ -89,12 +89,12 @@
 			<p>Sincerely,
 			<br>
 			<span style="font-size: 19px; line-height: 30px">Your friends at Hedron Vision</span>
-			<br><span style="font-size: 16px;">(the makers of Heart Rate <img src="appIcon.svg" style="height: 1em; vertical-align: text-bottom"> )</span>
+			<br><span style="font-size: 16px;">(the makers of Heart Rate <img src="/appIcon.svg" style="height: 1em; vertical-align: text-bottom"> )</span>
 			</p>
 			
 			<figure style="width:110px; display: block; margin: 0px auto 30px auto; filter: drop-shadow(0px 0px 15px #111111); " >
 				<!-- If you're reading this, you should consider working with us. Reach out at joinus@hedronvision.com! -->
-				<img src="cube.svg" onload="
+				<img src="/cube.svg" onload="
 					if (this.spinning) {
 						this.timerPause = function() {
 							setTimeout(this.pause.bind(this), 17800/6.0);
@@ -104,13 +104,13 @@
 								this.timerPause();
 							} else { 
 								this.spinning=false;
-								this.src='cube.svg';
+								this.src='/cube.svg';
 							}
 						};
 						this.play = function() {
 							if (!this.spinning) {
 								this.spinning = true;
-								this.src='cubeAnimated.svg';
+								this.src='/cubeAnimated.svg';
 								this.timerPause();
 							}
 						};
@@ -118,7 +118,7 @@
 						this.onload = undefined;
 					} else {
 						this.spinning = true;
-						this.src = 'cubeAnimated.svg';
+						this.src = '/cubeAnimated.svg';
 					}"
 					onmousedown="if (this.play) {this.play();}"
 					onmouseover="this.mouseIsOver=true; this.onmousedown()"
