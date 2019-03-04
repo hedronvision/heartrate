@@ -1,10 +1,164 @@
-I am a share page. Watch me share.
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Heart Rate</title>		
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+		<link rel="manifest" href="/favicon/site.webmanifest">
+		<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#db2b30">
+		<link rel="shortcut icon" href="/favicon/favicon.ico">
+		<meta name="msapplication-TileColor" content="#2d2d2d">
+		<meta name="msapplication-config" content="/favicon/browserconfig.xml">
+		<meta name="theme-color" content="#2d2d2d">
+		<script type="text/javascript">
+			(function(e, t) {
+				var n = {
+					_q: [],
+					_iq: {}
+				};
+				var r = t.createElement("script");
+				r.type = "text/javascript";
+				r.async = true;
+				r.src = "https://cdn.amplitude.com/libs/amplitude-4.5.2-min.gz.js";
+				r.integrity = "sha384-f1maK8oMrCMNEWGGg3Hx3dMTOQBbXr4e1ZIjB/J0TcgJx5UeE0g5S5PM5BbWPe4E";
+				r.crossOrigin = "anonymous";
+				r.onload = function() {
+					e.amplitude.runQueuedFunctions()
+				};
 
-If I know what user-agent I have, automatically redirect me
+				var i = t.getElementsByTagName("script")[0];
+				i.parentNode.insertBefore(r, i);
+				function s(e, t) {
+					e.prototype[t] = function() {
+						this._q.push([t].concat(Array.prototype.slice.call(arguments, 0)));
+						return this
+					}
+				}
+				var d = ["init", "logEvent"];
+				function v(e) {
+					function t(t) {
+						e[t] = function() {
+							e._q.push([t].concat(Array.prototype.slice.call(arguments, 0)))
+						}
+					}
+					for (var n = 0; n < d.length; n++) {
+						t(d[n])
+					}
+				}
+				v(n);
+				n.getInstance = function(e) {
+					e = (!e || e.length === 0 ? "$default_instance" : e).toLowerCase();
+					if (!n._iq.hasOwnProperty(e)) {
+						n._iq[e] = {
+							_q: []
+						};
+						v(n._iq[e])
+					}
+					return n._iq[e]
+				};
+				e.amplitude = n
+			})(window, document);
 
-Here is a picture of a "take me to the main page" link
+			var a = amplitude.getInstance();
+			a.init("2565032ed2248c60d88c5d7be9e3148a", null, {includeReferrer: true});
+			
+			var p = {s: (new URL(window.location.href)).searchParams.get('s')};
+			var isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+			
+			function goToAppStore() {
+//				window.location='TODO APP STORE URL';
+			}
+			
+			a.logEvent("DL Page View", p, function() {
+				if (isIOS) {
+					goToAppStore();
+				}
+			});
+			
+			function clickedAppStoreBadge() {
+				amplitude.getInstance().logEvent('Clicked App Store Badge (DL)', p, goToAppStore);
+			}
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+		<style>
+			body {font-family: 'Lato'; font-weight: 300; text-align: center}
+			p, footer, figcaption {color: white; font-family: 'Lato', sans-serif; font-size: 18px; text-shadow: 0px 0px 1em #111111}
+			a {text-decoration: none; color: white}
+			/* Footer */
+			html, body {height: 100%; margin: 0px}
+			body {display: flex; flex-direction: column; justify-content: space-between}
+			main {flex: 1}
+		</style>
+	</head>
+	<body style="background-color: rgb(24,24,24); margin:0px">
+		<main>
+			<a href="javascript: if(isIOS) { location.reload();}" style="display: inline-block">
+				<figure>
+					<img src="/appIcon.svg" style="height:160px; display: block; margin-bottom:8px; margin-left: auto; margin-right: auto; filter: drop-shadow(0px 0px 8px #111111); ">
+					<figcaption style="font-size: 24px; font-weight: 400; text-align: center">Heart Rate</figcaption>
+				</figure>
+			</a>
+			<div style="margin: 0 auto 0 auto; padding: 16px; max-width: 400px;">
+				<p style="font-size: 20px; margin-top: ">Measure your pulse by glancing at your phone!</p>
+				
+				<p style="color: #E6E6E6">Fast, free, and accurate.<br/>Simple to use.<br/>No blinding flash or smudged camera lens.</p>
+				
+				<p style="padding-top: 16px; padding-bottom: 24px">
+					<a href="javascript:clickedAppStoreBadge();">
+<!--
+						<img src="/appStoreBadge.svg"><br/>
+						<span style="font-size: 12px; color: #D0D0D0">Available for iPhone, iPad, and iPod touch.</span>
+-->
+						<span style="font-size: 12px; color: #D0D0D0">Coming soon for iPhone, iPad, and iPod touch.</span>
+					</a>
+				</p>
 
-Here is a picture of a "take me to the app store" link
+				<p style="font-size: 18px">Works by detecting micro-blushes of the face, imperceptible to the eye.</p>
+					
+				<p style="font-size: 14px; color: #E6E6E6">Interested in this tech for something else?<br/>Send us a quick email. We'd love to make it easy for you.</p>
 
-Here is a picture of a "take me to the play store" link
-
+				<p style="font-size: 12px; color:#D0D0D0; margin-top: 24px; margin-bottom: 0px;">[Intended for fitness, not medical, use.]</p>
+			</div>
+		</main>
+		<footer>
+			<p style="margin-bottom: 0"><span style="font-size: 12px">built by </span>
+			<a href="https://hedronvision.com" style="font-size: 24px; font-variant: small-caps">Hedron Vision</a>
+			<!-- If you're reading this, you should consider working with us. Reach out at joinus@hedronvision.com! -->
+			<img src="/cube.svg" style="height: 24px; vertical-align: text-bottom; filter: drop-shadow(0px 0px 4px #111111)" onload="
+				if (this.spinning) {
+					this.timerPause = function() {
+						setTimeout(this.pause.bind(this), 17800/6.0);
+					};
+					this.pause = function() {
+						if (this.mouseIsOver) {
+							this.timerPause();
+						} else { 
+							this.spinning=false;
+							this.src='/cube.svg';
+						}
+					};
+					this.play = function() {
+						if (!this.spinning) {
+							this.spinning = true;
+							this.src='/cubeAnimated.svg';
+							this.timerPause();
+						}
+					};
+					this.timerPause();
+					this.onload = undefined;
+				} else {
+					this.spinning = true;
+					this.src = '/cubeAnimated.svg';
+				}"
+				onmousedown="if (this.play) {this.play();}"
+				onmouseover="this.mouseIsOver=true; this.onmousedown()"
+				onmouseout="this.mouseIsOver=false;"
+				onmouseup="this.onmouseout();">
+			</p>
+			<p style="margin-top: 8px; font-size: 14px"><a href="/privacy.html">Privacy</a> | HeartRate@HedronVision.com</p>
+		</footer>
+	</body>
+</html>

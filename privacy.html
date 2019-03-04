@@ -64,19 +64,22 @@
 
 			var a = amplitude.getInstance();
 			a.init("2565032ed2248c60d88c5d7be9e3148a", null, {includeReferrer: true});
-			a.logEvent("Privacy Page View");
+//			a.logEvent("Privacy Page View");
 		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link href="https://fonts.googleapis.com/css?family=Lato:300i,400" rel="stylesheet">
 		<style>
 			body {font-family: 'Lato'}
+			a {text-decoration: none; color: white}
 			p {color: white; font-family: 'Lato', sans-serif; font-size: 18px; font-style: italic; text-shadow: 0px 0px 1em #111111;}
 			p.indent {text-indent: 2.5em;}
 		</style>
 	</head>
 	<body style="background-color: rgb(32,32,32); margin:0px; padding:20px">
 		<div style="margin: 0px auto; padding: 40px; max-width: 800px; background-color: rgb(45,45,45); box-shadow: 0px 0px 15px #111111; border-radius: 2px">
-			<img src="/heart.svg" style="width:100px; display: block; margin-bottom:32px; margin-left: auto; margin-right: auto; filter: drop-shadow(0px 0px 15px #111111); ">
+			<a href="/" style="display: block; width: 100px; margin-bottom:28px; margin-left: auto; margin-right: auto;">
+				<img src="/heart.svg" style="width:100px; display: block; margin: 0; filter: drop-shadow(0px 0px 15px #111111); ">
+			</a>
 
 			<p>Dear User,</p>
 
@@ -88,8 +91,8 @@
 
 			<p>Sincerely,
 			<br>
-			<span style="font-size: 19px; line-height: 30px">Your friends at Hedron Vision</span>
-			<br><span style="font-size: 16px;">(the makers of Heart Rate <img src="/appIcon.svg" style="height: 1em; vertical-align: text-bottom"> )</span>
+			<span style="font-size: 19px; line-height: 30px">Your friends at <a href="https://hedronvision.com">Hedron Vision</a></span>
+			<br><span style="font-size: 16px;">(the makers of <a href="/">Heart Rate <img src="/appIcon.svg" style="height: 1em; vertical-align: text-bottom"> )</a></span>
 			</p>
 			
 			<figure style="width:110px; display: block; margin: 0px auto 30px auto; filter: drop-shadow(0px 0px 15px #111111); " >
@@ -124,7 +127,7 @@
 					onmouseover="this.mouseIsOver=true; this.onmousedown()"
 					onmouseout="this.mouseIsOver=false;"
 					onmouseup="this.onmouseout();">
-				<figcaption style="color: white; text-align: center">Hedron Vision</figcaption>
+				<figcaption style="color: white; text-align: center; font-variant: small-caps;"><a href="https://hedronvision.com">Hedron Vision</a></figcaption>
 			</figure>
 
 			<p style="font-size: 16px; color:rgb(200,200,200); margin-bottom: 0px">P.S. We may need to update this letter as the product grows. If so, we'll keep it updated right here at heartrate.hedronvision.com/privacy. You've probably noticed that we don't force you to create an account or provide your email—that helps protect your privacy but prevents us from emailing everyone when we make changes. You're always welcome to check back here for updates, and we'll assume you're happy from your continued use of the software.</p>
