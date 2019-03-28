@@ -63,8 +63,14 @@
 			})(window, document);
 
 			var a = amplitude.getInstance();
-			a.init("2565032ed2248c60d88c5d7be9e3148a", null, {includeReferrer: true});
-//			a.logEvent("Privacy Page View");
+
+			var k = "3db74f59a9db3630532afdf4356adebc";
+			if (location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === "") {
+				k = "2565032ed2248c60d88c5d7be9e3148a";
+			}
+			a.init(k, null, {includeReferrer: true});
+			
+			a.logEvent("Privacy Page View");
 		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link href="https://fonts.googleapis.com/css?family=Lato:300i,400" rel="stylesheet">
