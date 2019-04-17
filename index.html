@@ -127,36 +127,32 @@
 			<p style="margin-bottom: 0"><span style="font-size: 12px">built by </span>
 			<a href="https://hedronvision.com" style="font-size: 24px; font-variant: small-caps">Hedron Vision</a>
 			<!-- If you're reading this, you should consider working with us. Reach out at joinus@hedronvision.com! -->
-			<img src="/cube.svg" style="height: 24px; vertical-align: text-bottom; filter: drop-shadow(0px 0px 4px #111111)" onload="
-				if (this.spinning) {
-					this.timerPause = function() {
-						setTimeout(this.pause.bind(this), 17800/6.0);
-					};
-					this.pause = function() {
-						if (this.mouseIsOver) {
-							this.timerPause();
-						} else { 
-							this.spinning=false;
-							this.src='/cube.svg';
-						}
-					};
-					this.play = function() {
-						if (!this.spinning) {
-							this.spinning = true;
-							this.src='/cubeAnimated.svg';
-							this.timerPause();
-						}
-					};
-					this.timerPause();
-					this.onload = undefined;
-				} else {
-					this.spinning = true;
-					this.src = '/cubeAnimated.svg';
-				}"
-				onmousedown="if (this.play) {this.play();}"
-				onmouseover="this.mouseIsOver=true; this.onmousedown()"
-				onmouseout="this.mouseIsOver=false;"
-				onmouseup="this.onmouseout();">
+			<object data="/cubeAnimated.svg" type="image/svg+xml" style="height: 24px; width: 24px; vertical-align: text-bottom; filter: drop-shadow(0px 0px 4px #111111); background-image: url(/cube.svg)" onload="
+				var a = this.contentDocument.children[0];
+				a.pauseAnimations();
+				this.timerPause = function() {
+					setTimeout(this.pause.bind(this), 2983);
+				};
+				this.pause = function() {
+					if (this.mouseIsOver) {
+						this.timerPause();
+					} else {
+						a.pauseAnimations();
+					}
+				}
+				this.play = function() {
+					if (a.animationsPaused()) {
+						this.style.backgroundImage = null;
+						a.unpauseAnimations();
+						this.timerPause();
+					}
+				};
+				setTimeout(this.play.bind(this), 500);
+				a.onmousedown = this.onmouseover.bind(this);
+				a.onmouseup = this.onmouseout.bind(this);"
+				onmouseover="this.mouseIsOver=true; if (this.play) this.play();"
+				onmouseout="this.mouseIsOver=false;">
+			</object>
 			</p>
 			<p style="margin-top: 8px; font-size: 14px"><a href="/privacy.html">Privacy</a> | HeartRate@HedronVision.com</p>
 		</footer>
