@@ -87,7 +87,13 @@
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
 		<style>
 			body {font-family: 'Lato'; font-weight: 300; text-align: center}
-			p, footer, figcaption {color: white; font-family: 'Lato', sans-serif; font-size: 18px; text-shadow: 0px 0px 1em #111111}
+			p, footer, figcaption, input, button {color: white; font-family: 'Lato', sans-serif; font-size: 18px; text-shadow: 0px 0px 1em #111111}
+			input, button {outline-color: #DB2B30;}
+			::selection {background-color:#DB2B30;}
+			input, button {border-radius: 6px; border-width: 2px; background-color: black; font-size: 12px; border-style: solid}
+			input { border-color: rgba(219,43,48, 0.3); height: 2em; padding: 2px 0px 2px 8px}
+			button {font-weight: 300; color: #D0D0D0; border-color: rgba(219,43,48, 0.4); height: 2.5em; padding: 2px 8px}
+			form > span {font-size: 12px; color: #D0D0D0; padding-bottom: 14px; line-height: 2em}
 			a {text-decoration: none; color: white}
 			/* Footer */
 			html, body {height: 100%; margin: 0px}
@@ -101,7 +107,7 @@
 			<a href="javascript: if(isIOS) { window.location = '/dl.html?s=s';}" style="display: inline-block">
 				<figure>
 					<img src="/appIcon.svg" style="height:160px; display: block; margin-bottom:8px; margin-left: auto; margin-right: auto; filter: drop-shadow(0px 0px 8px #111111); ">
-					<figcaption style="font-size: 24px; font-weight: 400; text-align: center">Heart Rate</figcaption>
+					<figcaption style="font-size: 24px; font-weight: 400; text-align: center">Hands-Free<br>Heart Rate</figcaption>
 				</figure>
 			</a>
 			<div style="margin: 0 auto 0 auto; padding: 16px; max-width: 400px;">
@@ -109,15 +115,27 @@
 				
 				<p style="color: #E6E6E6">Fast, free, and accurate.<br/>Simple to use.<br/>No blinding flash or smudged camera lens.</p>
 				
-				<p style="padding-top: 16px; padding-bottom: 18px">
+				<div style="padding-top: 16px; padding-bottom: 18px">
 					<a href="javascript:clickedAppStoreBadge();">
 <!--
-						<img src="/appStoreBadge.svg"><br/>
-						<span style="font-size: 12px; color: #D0D0D0">Available for iPhone, iPad, and iPod touch.</span>
+						<img src="/appStoreBadge.svg" width="125px" style="filter: drop-shadow(0px 0px 10px #DB2B30);"><br/>
+						<div style="font-size: 12px; color: #F0F0F0; padding-top: 0.5em">Available for iPhone, iPad, and iPod touch.<br/>Downloads in less than a second.</div>
 -->
 						<span style="font-size: 12px; color: #D0D0D0">Coming soon for iPhone, iPad, and iPod touch.</span>
 					</a>
-				</p>
+				</div>
+				
+				<form action="https://docs.google.com/forms/d/e/1FAIpQLSeDHU3IkOkgG7cnlT5Jmv9jalijjHIaZ1TCxsEEwCPgpoeKHA/formResponse" method="post">
+					<span>Email me a reminder later.</span><br/>
+					<input type="email" name="entry.1670508223" autocomplete="email" placeholder="Email" required>
+					<button type="submit">iOS Reminder</button>
+				</form>
+				
+				<form action="https://docs.google.com/forms/d/e/1FAIpQLSfuhlZnkZG-Ctpk7jUyueoaRzL0VorktDU3zRY1yPZ2m-L7Vg/formResponse" method="post" style="padding: 0.25em 0px">
+					<span>Coming soon for Android. Sign up to be notified.</span><br/>
+					<input type="email" name="entry.1670508223" autocomplete="email" placeholder="Email" required>
+					<button type="submit">Android Sign Up</button>
+				</form>
 
 				<p style="font-size: 18px; margin-bottom: 0px">Works by detecting micro-blushes of the face, imperceptible to the eye.</p>
 					
