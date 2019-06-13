@@ -91,19 +91,37 @@
 					}
 				});
 			}
+			
+			function submitFormNoRedirect(form) {
+				var sendButton = form.getElementsByTagName('button')[0];
+				var sendButtonInner = sendButton.innerHTML;
+				sendButton.innerHTML = 'Sending...';
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4) {
+						sendButton.innerHTML = 'Sent!';
+						setTimeout(function() {
+							sendButton.innerHTML = sendButtonInner;
+						}, 2000);
+					}
+				};
+				xhr.open(form.method, form.action, true);
+				xhr.send(new FormData(form));
+				return false;
+			}
 		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
 		<style>
 			body {font-family: 'Lato'; font-weight: 300; text-align: center}
-			p, footer, figcaption, input, button {color: white; font-family: 'Lato', sans-serif; font-size: 18px; text-shadow: 0px 0px 1em #111111}
-			input, button {outline-color: #DB2B30;}
-			::selection {background-color:#DB2B30;}
-			input, button {border-radius: 6px; border-width: 2px; background-color: black; font-size: 12px; border-style: solid}
-			input { border-color: rgba(219,43,48, 0.3); height: 2em; padding: 2px 0px 2px 8px}
+			p, footer, figcaption, input, button, textarea {color: white; font-family: 'Lato', sans-serif; font-size: 18px; text-shadow: 0px 0px 1em #111111}
+			input, textarea, button {outline-color: #DB2B30;}
+			input, textarea, button {border-radius: 6px; border-width: 2px; background-color: black; font-size: 12px; border-style: solid}
+			input, textarea { border-color: rgba(219,43,48, 0.3); height: 2em; padding: 2px 0px 2px 8px}
 			button {font-weight: 300; color: #D0D0D0; border-color: rgba(219,43,48, 0.4); height: 2.5em; padding: 2px 8px}
 			form > span {font-size: 12px; color: #D0D0D0; padding-bottom: 14px; line-height: 2em}
 			a {text-decoration: none; color: white}
+			::selection {background-color:#DB2B30;}
 			/* Footer */
 			html, body {height: 100%; margin: 0px}
 			body {display: flex; flex-direction: column; justify-content: space-between}
@@ -116,7 +134,7 @@
 			<a href="javascript: if(isIOS) { location.reload();}" style="display: inline-block">
 				<figure>
 					<img src="/appIcon.svg" style="height:160px; display: block; margin-bottom:8px; margin-left: auto; margin-right: auto; filter: drop-shadow(0px 0px 8px #111111); ">
-					<figcaption style="font-size: 24px; font-weight: 400; text-align: center">Hands-Free<br>Heart Rate</figcaption>
+					<figcaption style="font-size: 24px; font-weight: 400; text-align: center">Hands-Free<br/>Heart Rate</figcaption>
 				</figure>
 			</a>
 			<div style="margin: 0 auto 0 auto; padding: 16px; max-width: 400px;">
@@ -134,13 +152,13 @@
 					</a>
 				</div>
 				
-				<form action="https://docs.google.com/forms/d/e/1FAIpQLSeDHU3IkOkgG7cnlT5Jmv9jalijjHIaZ1TCxsEEwCPgpoeKHA/formResponse" method="post">
+				<form action="https://docs.google.com/forms/d/e/1FAIpQLSeDHU3IkOkgG7cnlT5Jmv9jalijjHIaZ1TCxsEEwCPgpoeKHA/formResponse" method="post" onsubmit="return submitFormNoRedirect(this)">
 					<span>Email me a reminder later.</span><br/>
 					<input type="email" name="entry.1670508223" autocomplete="email" placeholder="Email" required>
 					<button type="submit">iOS Reminder</button>
 				</form>
 				
-				<form action="https://docs.google.com/forms/d/e/1FAIpQLSfuhlZnkZG-Ctpk7jUyueoaRzL0VorktDU3zRY1yPZ2m-L7Vg/formResponse" method="post" style="padding: 0.25em 0px">
+				<form action="https://docs.google.com/forms/d/e/1FAIpQLSfuhlZnkZG-Ctpk7jUyueoaRzL0VorktDU3zRY1yPZ2m-L7Vg/formResponse" method="post" onsubmit="return submitFormNoRedirect(this)" style="padding: 0.25em 0px">
 					<span>Coming soon for Android. Sign up to be notified.</span><br/>
 					<input type="email" name="entry.1670508223" autocomplete="email" placeholder="Email" required>
 					<button type="submit">Android Sign Up</button>
@@ -204,5 +222,13 @@
 			</p>
 			<p style="margin-top: 8px; font-size: 14px"><a href="/privacy.html">Privacy</a> | HeartRate@HedronVision.com</p>
 		</footer>
+		<div style="position: fixed; bottom: 0; right: 10px; background-color: rgb(87,17,19); border-top-left-radius: 6px; border-top-right-radius: 6px; filter: drop-shadow(0px 0px 8px #111111); text-align: center" onmouseenter="this.getElementsByTagName('form')[0].style.display = 'inline';" onmouseleave="this.getElementsByTagName('form')[0].style.display = 'none';">
+			<img src="/message.svg" style="width: 24px; margin: 6px 6px 1px 6px;">
+			<form onsubmit="return submitFormNoRedirect(this)" action="https://docs.google.com/forms/d/e/1FAIpQLSdU9F-OxTwt1NxwkgRGXvjVfjF4BUqLiHUDYj3THUujYeAniw/formResponse" method="post" style="display: none">
+				<textarea name="entry.1792109911" placeholder="How can we help?" required style="resize: none; width: 92%; height: 80px"></textarea><br/>
+				<input type="email" name="entry.1670508223" autocomplete="email" placeholder="Email (optional)">
+				<button type="submit">Send</button>
+			</form>
+		</div>
 	</body>
 </html>
