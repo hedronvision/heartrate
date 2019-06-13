@@ -213,9 +213,9 @@
 			</p>
 			<p style="margin-top: 8px; font-size: 14px"><a href="/privacy.html">Privacy</a> | HeartRate@HedronVision.com</p>
 		</footer>
-		<div style="position: fixed; bottom: 0; right: 10px; background-color: rgb(87,17,19); border-top-left-radius: 6px; border-top-right-radius: 6px; filter: drop-shadow(0px 0px 8px #111111); text-align: center" onmouseenter="this.getElementsByTagName('form')[0].style.display = 'inline';" onmouseleave="this.getElementsByTagName('form')[0].style.display = 'none';" onclick="this.onmouseleave();">
+		<div style="position: fixed; bottom: 0; right: 10px; background-color: rgb(87,17,19); border-top-left-radius: 6px; border-top-right-radius: 6px; filter: drop-shadow(0px 0px 8px #111111); text-align: center" onmouseenter="this.open=true; this.getElementsByTagName('form')[0].style.display = 'inline';" onmouseleave="this.open=false; this.getElementsByTagName('form')[0].style.display = 'none';" onclick="if(this.open) this.onmouseleave(); else this.onmouseenter();">
 			<img src="/message.svg" style="width: 24px; margin: 6px 6px 1px 6px;">
-			<form onsubmit="return submitFormNoRedirect(this)" action="https://docs.google.com/forms/d/e/1FAIpQLSdU9F-OxTwt1NxwkgRGXvjVfjF4BUqLiHUDYj3THUujYeAniw/formResponse" method="post" style="display: none">
+			<form onsubmit="return submitFormNoRedirect(this)" action="https://docs.google.com/forms/d/e/1FAIpQLSdU9F-OxTwt1NxwkgRGXvjVfjF4BUqLiHUDYj3THUujYeAniw/formResponse" method="post" style="display: none" onclick="event.stopPropagation()">
 				<textarea name="entry.1792109911" placeholder="How can we help?" required style="resize: none; width: 92%; height: 80px"></textarea><br/>
 				<input type="email" name="entry.1670508223" autocomplete="email" placeholder="Email (optional)">
 				<button type="submit">Send</button>
