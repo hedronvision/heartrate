@@ -71,6 +71,17 @@
 			
 			var p = {s: (new URL(window.location.href)).searchParams.get('s')};
 			var isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+			var isAndroid = !!navigator.userAgent && /(android)/i.test(navigator.userAgent);
+			
+			if (!isIOS && !isAndroid) {				
+				document.addEventListener('DOMContentLoaded', function() {
+					Array.prototype.forEach.call(document.getElementsByTagName('a'), function(a) {
+						if (a.href.startsWith('mailto:')) {
+							a.removeAttribute('href');
+						}
+					});
+				}, false);
+			}
 			
 			function goToAppStore() {
 //				window.location='https://itunes.apple.com/app/id1457939511';
@@ -170,7 +181,7 @@
 
 				<p style="font-size: 14px; color: #E6E6E6; margin-top: 8px">Interested in this tech for something else?<br/>Send us a quick email. We'd love to make it easy for you.</p>
 
-				<p style="font-size: 16px">Suggestions? Questions? Feedback?<br/>Email us at HeartRate@HedronVision.com.</p>
+				<p style="font-size: 16px">Suggestions? Questions? Feedback?<br/>Email us at <a href="mailto:heartrate@hedronvision.com?subject=Hello,%20Hedron Heart Rate" target="_blank">HeartRate@HedronVision.com</a></p>
 
 				<p style="font-size: 12px; color:#D0D0D0; margin-top: 24px; margin-bottom: 0px;">[Intended for fitness, not medical use.]</p>
 			</div>
@@ -222,7 +233,7 @@
 				onmouseout="this.mouseIsOver=false;">
 			</object>
 			</p>
-			<p style="margin-top: 8px; font-size: 14px"><a href="/privacy.html">Privacy</a> | HeartRate@HedronVision.com</p>
+			<p style="margin-top: 8px; font-size: 14px"><a href="/privacy.html">Privacy</a> | <a href="mailto:heartrate@hedronvision.com?subject=Hello,%20Hedron Heart Rate" target="_blank">HeartRate@HedronVision.com</a></p>
 		</footer>
 		<div style="position: fixed; bottom: 0; right: 10px; background-color: rgb(87,17,19); border-top-left-radius: 6px; border-top-right-radius: 6px; filter: drop-shadow(0px 0px 8px #111111); text-align: center" onmouseenter="this.open=true; this.getElementsByTagName('form')[0].style.display = 'inline';" onmouseleave="this.open=false; this.getElementsByTagName('form')[0].style.display = 'none';" onclick="if(this.open) this.onmouseleave(); else this.onmouseenter();">
 			<img src="/message.svg" style="width: 24px; margin: 6px 6px 1px 6px;">

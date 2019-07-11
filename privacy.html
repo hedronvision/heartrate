@@ -72,6 +72,19 @@
 			
 			a.logEvent("Privacy Page View");
 			
+			var isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+			var isAndroid = !!navigator.userAgent && /(android)/i.test(navigator.userAgent);
+			
+			if (!isIOS && !isAndroid) {				
+				document.addEventListener('DOMContentLoaded', function() {
+					Array.prototype.forEach.call(document.getElementsByTagName('a'), function(a) {
+						if (a.href.startsWith('mailto:')) {
+							a.removeAttribute('href');
+						}
+					});
+				}, false);
+			}
+			
 			function submitFormNoRedirect(form) {
 				var sendButton = form.getElementsByTagName('button')[0];
 				var sendButtonInner = sendButton.innerHTML;
@@ -117,7 +130,7 @@
 
 			<p class="indent">To help us make better software for everyone, we do measure anonymously how the product is used. We don't identify you from these usage measurements, nor do we believe we could.</p>
 
-			<p class="indent">The only way we'd know who you are is if you contact us—and we love hearing from you! Feel free to reach out at heartrate@hedronvision.com with any questions or feedback on this or anything else.</p>
+			<p class="indent">The only way we'd know who you are is if you contact us—and we love hearing from you! Feel free to reach out at <a href="mailto:heartrate@hedronvision.com?subject=Hello,%20Hedron Heart Rate" target="_blank">HeartRate@HedronVision.com</a> with any questions or feedback on this or anything else.</p>
 
 			<p>Sincerely,
 			<br/>
