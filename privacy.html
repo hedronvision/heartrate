@@ -75,14 +75,44 @@
 			var isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 			var isAndroid = !!navigator.userAgent && /(android)/i.test(navigator.userAgent);
 			
-			if (!isIOS && !isAndroid) {				
+						function copyToClipboard(s) {
+				var el = document.createElement('textarea');
+				el.value = s;
+				document.body.appendChild(el);
+				el.select();
+				document.execCommand('copy');
+				document.body.removeChild(el);
+			}
+			
+			if (!isIOS && !isAndroid) {
+				var head = document.getElementsByTagName('head')[0];
+				var s = document.createElement('script');
+				s.src = 'https://unpkg.com/popper.js@1.15.0';
+				s.integrity = 'sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb';
+				s.crossOrigin = "anonymous";
+				s.async = true;
+				head.appendChild(s);
+				s = document.createElement('script');
+				s.src = 'https://unpkg.com/tippy.js@4.3.4';
+				s.integrity = "sha384-jdlJ1MoU0LrYStK51EBb7UvXaZ2ukMt+8tmhzZfSUilURo7yUh+IjJt0nqFjHapI";
+				s.crossOrigin= "anonymous";
+				s.async = true;
+				head.appendChild(s);
 				document.addEventListener('DOMContentLoaded', function() {
 					Array.prototype.forEach.call(document.getElementsByTagName('a'), function(a) {
 						if (a.href.startsWith('mailto:')) {
 							a.removeAttribute('href');
+							a.style.cursor = 'pointer';
+							a.setAttribute('data-tippy', 'Click to copy!');
+							a.setAttribute('data-tippy-arrow', 'true');
+							a.setAttribute('data-tippy-followcursor', 'true');
+							a.setAttribute('data-tippy-delay', '[200,0]');
+							a.addEventListener('click', function(e) {
+								copyToClipboard(e.target.innerText);
+							});
 						}
 					});
-				}, false);
+				});
 			}
 			
 			function submitFormNoRedirect(form) {
@@ -113,7 +143,7 @@
 			input, textarea, button {outline-color: #DB2B30;}
 			input, textarea, button {border-radius: 6px; border-width: 2px; background-color: black; font-size: 12px; border-style: solid}
 			input, textarea { border-color: rgba(219,43,48, 0.3); height: 2em; padding: 2px 0px 2px 8px}
-			button {font-weight: 300; color: #D0D0D0; border-color: rgba(219,43,48, 0.4); height: 2.5em; padding: 2px 8px}
+			button {font-weight: 300; color: #D0D0D0; border-color: rgba(219,43,48, 0.4); height: 2.5em; padding: 2px 8px; cursor: pointer}
 			a {text-decoration: none; color: white}
 			::selection {background-color:#DB2B30;}
 		</style>
