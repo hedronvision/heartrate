@@ -87,14 +87,13 @@
 			if (!isIOS && !isAndroid) {
 				var head = document.getElementsByTagName('head')[0];
 				var s = document.createElement('script');
-				s.src = 'https://unpkg.com/popper.js@1.15.0';
+				s.src = 'https://cdn.jsdelivr.net/npm/popper.js@1.15.0/dist/umd/popper.min.js';
 				s.integrity = 'sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb';
 				s.crossOrigin = "anonymous";
 				s.async = true;
 				head.appendChild(s);
 				s = document.createElement('script');
-				s.src = 'https://unpkg.com/tippy.js@4.3.4';
-				s.integrity = "sha384-jdlJ1MoU0LrYStK51EBb7UvXaZ2ukMt+8tmhzZfSUilURo7yUh+IjJt0nqFjHapI";
+				s.src = 'https://cdn.jsdelivr.net/npm/tippy.js@4.3.4/umd/index.all.min.js';
 				s.crossOrigin= "anonymous";
 				s.async = true;
 				head.appendChild(s);
